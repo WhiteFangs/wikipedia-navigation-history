@@ -35,7 +35,9 @@ function getArticlesAddedInLast24Hours($conn)
 
     $articles = [];
     while ($row = $result->fetch_assoc()) {
-        $articles[] = $row;
+        if (!in_array($row['title'], array_column($articles, 'title'))) {
+            $articles[] = $row;
+        }
     }
 
     return $articles;

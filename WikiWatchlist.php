@@ -146,8 +146,9 @@ foreach ($languages as $lang) {
             $csrfToken = $tokenResponseData['query']['tokens']['watchtoken'];
 
             $articlesToRemove = array();
+            $watchlistraw = array_reverse($responseData['watchlistraw']);
             // Insert the new articles into the database and store their addition time
-            foreach ($responseData['watchlistraw'] as $page) {
+            foreach ($watchlistraw as $page) {
                 $pageTitle = $page['title'];
                 if (!isTalkArticle($pageTitle, $lang)) {
 
